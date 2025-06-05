@@ -51,6 +51,7 @@
 ├── kuromoji-copy.js       # 必要に応じた改変版
 ├── dict/                  # 辞書データ
 ├── LICENSE-2.0.txt        # kuromoji.jsのライセンス
+├── my_icon.png            # アプリアイコン
 └── README.md              # 本ファイル
 ```
 
