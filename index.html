@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AIメール添削支援（匿名化）</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>AIメール添削支援（匿名化）ツール</h2>
+    <div id="description">
+      💡このツールは、メール文中の名前を特定し、匿名化するためのものです。
+      <br />
+      <br />
+      匿名化に関しては貴方の端末上で処理されるため，ネットワークを介して送信されることはありません。
+      添削用のプロンプトとして生成しますので、生成系AI（ChatGPT，Gemini）に貼り付けて添削を受けてください。
+      添削後に文章を再度入力いただくことで、元の名前に戻して表示することができます。
+      <br />
+      <br />
+      入力場所は徐々に表示されますので、順番に操作してください。
+      <br />
+      <br />
+      現在では形態素解析を行い，固有名詞を抽出して匿名化しています。不備がある場合は、手動で修正してください。
+    </div>
+    <textarea
+      id="inputText"
+      rows="6"
+      placeholder="名前を含むメール文を入力してください..."
+    ></textarea>
+    <button id="sendBtn" onclick="generateAnonymizedText()" disabled>
+      1. 匿名化する
+    </button>
+
+    <!-- ↓ 以降は初期非表示 -->
+    <div id="step2" style="display: none">
+      <div id="nameMappingList"></div>
+      <div>
+        <h3>匿名化されたメール文</h3>
+        <div>
+          <button
+            class="toggle-name"
+            onclick="
+            this.textContent = this.textContent === '[匿名x]' ? '元の文字' : '[匿名x]';"
+          >
+            [匿名x]
+          </button>
+          このようなボタンを押すと，元の文章に戻すことができます。
+        </div>
+      </div>
+
+      <div id="anonymizedText"></div>
+      <button onclick="generatePrompt()">
+        2. 添削用プロンプトを生成・コピー
+      </button>
+    </div>
+
+    <div id="step3" style="display: none">
+      <h3>生成されたプロンプト（コピーして他AIに貼ってください）</h3>
+      <div id="promptArea"></div>
+      <button onclick="copyPrompt()">プロンプトをコピー</button>
+    </div>
+
+    <div id="step4" style="display: none">
+      <textarea
+        id="revisedText"
+        rows="6"
+        placeholder="3. 添削済みテキストを貼り付けてください..."
+      ></textarea>
+      <button onclick="restoreOriginalNames()">4. 元の名前に戻して表示</button>
+    </div>
+
+    <div id="step5" style="display: none">
+      <h3>復元されたメール文</h3>
+      <div id="responseArea"></div>
+      <button id="copyRestoredBtn" onclick="copyRestoredText()">
+        コピーする
+      </button>
+    </div>
+
+    <script src="./kuromoji.js/build/kuromoji.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
