@@ -5,6 +5,14 @@ let lastAnonymized = "";
 
 document.getElementById("sendBtn").disabled = true;
 
+document.addEventListener("selectionchange", () => {
+  const selection = window.getSelection();
+  const isSelecting =
+    selection && selection.rangeCount > 0 && !selection.isCollapsed;
+
+  document.body.classList.toggle("selecting", isSelecting);
+});
+
 // kuromojiの初期化のみ
 kuromoji.builder({ dicPath: "./dict" }).build((err, _tokenizer) => {
   if (err) {
@@ -149,4 +157,50 @@ function copyRestoredText() {
     button.textContent = "✅ コピーしました！";
     setTimeout(() => (button.textContent = original), 1500);
   });
+}
+
+function manualAnonymizeSelection() {
+  const selection = window.getSelection();
+
+  // 選択されていない場合 → 強調表示だけして終了
+  if (!selection || selection.isCollapsed) {
+    // 一時的に `selecting` を body に付けて強調
+    document.body.classList.add("selecting");
+    setTimeout(() => {
+      document.body.classList.remove("selecting");
+    }, 1000); // 1秒後に解除
+
+    alert("テキストを選択してください。");
+    return;
+  }
+
+  const range = selection.getRangeAt(0);
+
+  // #anonymizedTextの中かチェック
+  const container = document.getElementById("anonymizedText");
+  if (!container.contains(range.commonAncestorContainer)) {
+    alert("匿名化できるのは表示中の文章内のみです。");
+    return;
+  }
+
+  const selectedText = selection.toString();
+  if (!selectedText.trim()) return;
+
+  const placeholder = `[匿名${nameId}]`;
+  const index =
+    nameMapping.push({ original: selectedText, placeholder, disabled: false }) -
+    1;
+  nameId++;
+
+  const button = document.createElement("button");
+  button.className = "toggle-name";
+  button.setAttribute("data-id", index);
+  button.textContent = placeholder;
+
+  range.deleteContents();
+  range.insertNode(button);
+
+  selection.removeAllRanges();
+  setupToggleButtons();
+  renderNameMappingList();
 }
