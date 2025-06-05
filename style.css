@@ -102,6 +102,7 @@ button:hover {
 }
 .select-highlight {
   text-decoration: underline;
+  background-color: #0077cc;
   transition: all 0.3s ease;
   font-weight: normal;
   color: #444;
