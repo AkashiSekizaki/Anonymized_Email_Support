@@ -4,6 +4,10 @@
 
 ---
 
+## 公開中
+
+[こちら](https://akashisekizaki.github.io/Anonymized_Email_Support/ "Github Pages")で公開中！
+
 ## 🔍 概要
 
 このアプリは、以下の 3 ステップで構成される安全な AI 活用プロセスをサポートします：

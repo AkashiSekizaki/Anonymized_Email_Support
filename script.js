@@ -120,7 +120,7 @@ function onToggleFromList(id, checked) {
 }
 
 function generatePrompt() {
-  const prompt = `以下の文章を丁寧で自然な日本語に添削してください。\n[匿名X]は人名を匿名化したものです。\nその形は変更せず、内容や敬語の添削のみ行ってください。\n===\n${
+  const prompt = `以下の文章を丁寧で自然な日本語に添削してください。\n[匿名X]は人名などを匿名化したものです。\nその形を絶対に変更せず、内容や敬語の添削のみ行ってください。\n変えてはいけない理由は，[匿名X]に対応する文字列を後の処理で代入するためです．[]の削除や，余計な記号をつけると，後の処理が適切に行うことができません．\n===\n${
     document.getElementById("anonymizedText").innerText
   }`;
   document.getElementById("promptArea").innerText = prompt;
