@@ -1,12 +1,13 @@
-# Anonymized_Email_Support
+# メールの匿名化サポート
 
 **Anonymized_Email_Support** は、生成 AI を安全に活用するための軽量な匿名化支援ツールです。メールやテキストデータ内の個人名などを検出・置換し、プライバシー保護を確実に担保したうえで AI に渡すことができます。匿名化された状態で生成 AI に指示を送り、返答の中から元の固有名詞を自動的に復元することで、機密性を保ちながら自然な AI 活用を実現します。
 
 ---
 
-## 公開中
-
-[こちら](https://akashisekizaki.github.io/Anonymized_Email_Support/ "Github Pages")で公開中！
+## 👀 見てほしいもの
+- [プレゼン資料はこちら](https://docs.google.com/presentation/d/1mSHcIrZzpEIUOkFYXL962ySl76yrwEKqRIJCYPAm8Xw/edit?usp=sharing)で公開中！
+- [デモ動画はこちら](https://drive.google.com/file/d/1C10klO6orazvi0fFvgR0D-K5YC7pkGUb/view)で公開中！
+- [アプリはこちら](https://akashisekizaki.github.io/Anonymized_Email_Support/ "Github Pages")で公開中！
 
 ## 🔍 概要
 
@@ -30,13 +31,13 @@
 - 🧠 GPT 等の AI に「匿名化されたまま応答する」ようプロンプトを自動追加
 - 🔁 AI の出力を貼り付けるだけで、匿名部分を復号（置換）可能
 - 🔒 個人情報を一切サーバーに送信せず、ローカルで完結
-- 💻 インストール不要、`index.html` を開くだけで使用可能
+- 💻 インストール不要、`index.html` を開くだけで使用可能（[公開されているアプリ](https://akashisekizaki.github.io/Anonymized_Email_Support/ "Github Pages")でも，通信などはありません）
 
 ---
 
-## 🚀 使い方
+## 🚀 ローカル環境での使い方
 
-1. このリポジトリをダウンロードまたはクローン
+1. このリポジトリをダウンロードまたはクローン（`git clone https://github.com/AkashiSekizaki/Anonymized_Email_Support.git`）
 2. `index.html` をブラウザで開く
 3. テキストを入力 → 匿名化された結果をコピー
 4. GPT などに貼り付けて出力を得る（自動プロンプト注入あり）
@@ -69,12 +70,6 @@
   本リポジトリに `LICENSE-2.0.txt` を同梱しています。
 
 このツール自体のコード部分は MIT ライセンスの下で公開予定です（必要に応じて `LICENSE` を追加してください）。
-
----
-
-## 👤 開発者
-
-- **Akashi Sekizaki**
 
 ---
 
